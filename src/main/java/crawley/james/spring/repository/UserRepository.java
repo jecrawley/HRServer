@@ -17,6 +17,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 //    List<JournalEntry> findBySummaryContaining(@Param("word") String word);
 
     //@CrossOrigin
-    List<User> findById(@Param("username") Long username);
+    List<User> findById(@Param("id") Long id);
+    List<User> findByUsername(@Param("username") String username);
 
 }

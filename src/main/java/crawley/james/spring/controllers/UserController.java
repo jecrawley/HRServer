@@ -1,8 +1,10 @@
 package crawley.james.spring.controllers;
+
+
 import crawley.james.spring.domain.User;
-import crawley.james.spring.exceptions.UserAlreadyExistsException;
 import crawley.james.spring.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,13 +33,15 @@ public class UserController {
     }
 
     @RequestMapping(value = "/users", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public @ResponseBody User addUser (@RequestBody User request) {
+    public @ResponseBody String addUser (@RequestBody User request) {
 
         try {
             repo.saveAndFlush(new User(request.getUsername(), request.getPassword()));
-        } catch (UserAlreadyExistsException e) {
+        } catch (DataIntegrityViolationException e) {
+
+            return "{\"message\":\"Error! User already exists!\"}";
 
         }
-        return request;
+        return "{\"message\":\"Success!\"}";
     }
 }

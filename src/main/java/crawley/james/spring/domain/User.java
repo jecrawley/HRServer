@@ -2,7 +2,7 @@ package crawley.james.spring.domain;
 
 import javax.persistence.*;
 
-import crawley.james.spring.exceptions.UserAlreadyExistsException;
+import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 
 /**
  * Created by jamescrawley on 10/26/16.
@@ -15,10 +15,11 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Column(unique=true)
     private String username;
     private String password;
 
-    public User (String username, String password) throws UserAlreadyExistsException {
+    public User (String username, String password) {
         this.username = username;
         this.password = password;
     }

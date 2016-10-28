@@ -41,7 +41,7 @@ public class TimeCardController {
         try {
             repo.saveAndFlush(new TimeCard(request.getStartTime(), request.getEndTime(), request.getDateAsShort()));
         } catch (ParseException e) {
-
+            return null;
         }
         return request;
     }
