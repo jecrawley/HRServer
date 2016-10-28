@@ -39,7 +39,7 @@ public class TimeCardController {
     public @ResponseBody TimeCard updateTimeCards (@RequestBody TimeCard request) {
 
         try {
-            repo.saveAndFlush(new TimeCard(request.getStartTime(), request.getEndTime(), request.getDateAsShort()));
+            repo.saveAndFlush(new TimeCard(request.getStartTime(), request.getEndTime(), request.getUsername(), request.getDateAsShort()));
         } catch (ParseException e) {
             return null;
         }

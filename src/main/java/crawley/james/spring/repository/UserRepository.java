@@ -16,7 +16,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 //    List<JournalEntry> findByCreatedBetween(@Param("after") @DateTimeFormat(iso = ISO.DATE) Date after,@Param("before") @DateTimeFormat(iso = ISO.DATE) Date before);
 //    List<JournalEntry> findBySummaryContaining(@Param("word") String word);
 
-    //@CrossOrigin
+    @CrossOrigin(origins = "http://localhost:9000")
     List<User> findById(@Param("id") Long id);
     List<User> findByUsername(@Param("username") String username);
 

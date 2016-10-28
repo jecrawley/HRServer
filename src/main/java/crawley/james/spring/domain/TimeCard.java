@@ -26,14 +26,16 @@ public class TimeCard {
     private Long id;
     private String startTime;
     private String endTime;
+    private String username;
     private Date date;
 
     @Transient
     private final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
-    public TimeCard (String startTime, String endTime, String date) throws ParseException {
+    public TimeCard (String startTime, String endTime, String username, String date) throws ParseException {
         this.startTime = startTime;
         this.endTime = endTime;
+        this.username = username;
         this.date = format.parse(date);
     }
 
@@ -63,6 +65,14 @@ public class TimeCard {
         this.endTime = endTime;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     @JsonSerialize(using=JsonDateSerializer.class)
     public Date getDate() {
         return date;
@@ -86,6 +96,8 @@ public class TimeCard {
         value.append("\"" + startTime + "\"");
         value.append(",\"endTime\": ");
         value.append("\"" + endTime + "\"");
+        value.append(",\"username\": ");
+        value.append("\"" + username + "\"");
         value.append(",\"date\": ");
         value.append("\"" + format.format(date) + "\"");
         value.append("},");
