@@ -18,8 +18,6 @@ import java.text.ParseException;
 @CrossOrigin(origins = "http://localhost:9000")
 public class TimeCardController {
 
-    private static final Logger log = LoggerFactory.getLogger(TimeCardController.class);
-
     @Autowired
     TimeCardRepository repo;
 
@@ -36,13 +34,13 @@ public class TimeCardController {
     }
 
     @RequestMapping(value = "/timecards", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public @ResponseBody TimeCard updateTimeCards (@RequestBody TimeCard request) {
+    public @ResponseBody String updateTimeCards (@RequestBody TimeCard request) {
 
         try {
             repo.saveAndFlush(new TimeCard(request.getStartTime(), request.getEndTime(), request.getUsername(), request.getDateAsShort()));
         } catch (ParseException e) {
-            return null;
+            return "{\"message\":\"Error! Time could not be parsed!\"}";
         }
-        return request;
+        return "{\"message\":\"Success!\"}";
     }
 }

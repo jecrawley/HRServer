@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin(origins = "http://localhost:9000")
 public class UserController {
 
-
     @Autowired
     UserRepository repo;
 
