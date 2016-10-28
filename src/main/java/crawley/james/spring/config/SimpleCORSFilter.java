@@ -1,4 +1,4 @@
-package crawley.james.spring;
+package crawley.james.spring.config;
 
 import java.io.IOException;
 import javax.servlet.Filter;

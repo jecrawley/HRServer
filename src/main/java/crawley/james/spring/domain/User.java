@@ -2,8 +2,6 @@ package crawley.james.spring.domain;
 
 import javax.persistence.*;
 
-import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
-
 /**
  * Created by jamescrawley on 10/26/16.
  */
