@@ -43,4 +43,9 @@ public class TimeCardController {
         }
         return "{\"message\":\"Success!\"}";
     }
+
+    @RequestMapping(value = "/timecards/{id}", method = RequestMethod.DELETE)
+    public void deleteTimeCard (Long id) {
+        repo.delete(id);
+    }
 }
